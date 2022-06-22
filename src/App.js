@@ -41,6 +41,7 @@ function App() {
 
  const [total,price]=useState(0);
  const [cart,add]=useState([]);
+
   let items = (id)=>{
 
 var index=product.findIndex((obj)=>obj.id===id)
@@ -48,9 +49,22 @@ var pro=product[index];
     add([...cart,pro]);
     price(+total+ +product[index].price);
     
-  //  alert(product[id-1].title);
    
   }
+
+  
+  let d = (id)=>{
+    var index=cart.findIndex((obj)=>obj.id===id)
+    price(total-cart[index].price);
+       cart.splice(index,1);
+   add([...cart]) ;
+  
+
+        
+       
+      }
+
+
 
 
 
@@ -72,7 +86,7 @@ var pro=product[index];
             <div className="col-lg-12">
               <ol>
                 {
-                cart.map((i)=>{return (<Lists itemname={i}  > </Lists>)})
+                cart.map((i)=>{return (<Lists itemname={i} del={d} > </Lists>)})
                 }
                 </ol>
               <h3>Total : ${total}</h3>
