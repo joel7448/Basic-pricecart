@@ -62,8 +62,7 @@ pro.incart=true;
        
    add([...cart]) ;
   
-        
-       
+          
       }
 
 
