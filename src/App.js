@@ -6,7 +6,7 @@ import Lists from "./lists";
 import { useState } from "react";
 
 function App() {
-  const [product, temp] = useState([
+const product=[
     {
       title: "Air Conditioner",
       price: "500",
@@ -35,9 +35,9 @@ function App() {
     {
       title: "Furniture",
       price: "750",
-      id: 5,
+      id: 6,
     },
-  ]);
+  ];
 
  const [total,price]=useState(0);
  const [cart,add]=useState([]);
@@ -46,6 +46,7 @@ function App() {
 
 var index=product.findIndex((obj)=>obj.id===id)
 var pro=product[index];
+pro.incart=true;
     add([...cart,pro]);
     price(+total+ +product[index].price);
     
@@ -55,8 +56,10 @@ var pro=product[index];
   
   let d = (id)=>{
     var index=cart.findIndex((obj)=>obj.id===id)
+   
     price(total-cart[index].price);
        cart.splice(index,1);
+       
    add([...cart]) ;
   
 
@@ -75,7 +78,7 @@ var pro=product[index];
         <div className="col-lg-8">
           <div className="row">
             {product.map((product) => {
-              return <Card name={product} addtocart={items}></Card>;
+              return <Card cartitems={cart} name={product} addtocart={items}></Card>;
             })}
           </div>
         </div>

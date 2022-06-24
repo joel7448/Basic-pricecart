@@ -7,8 +7,9 @@ function Card(a){
   <div className="card-body">
     <h5 className="card-title">{a.name.title}</h5>
     <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    
     <h6>${a.name.price}</h6>
-    <a href="#" className="btn btn-primary" onClick={()=>a.addtocart(a.name.id)}>Add to cart +</a>
+    <button disabled={ a.cartitems.some(obj=>obj.id===a.name.id)} className="btn btn-primary" onClick={()=>a.addtocart(a.name.id)}>Add to cart +</button>
   </div>
 </div>
 </div>
